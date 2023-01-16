@@ -1,6 +1,7 @@
 // add DOM display elements
 const playerScoreEl = document.querySelector('.player-score');
 const computerScoreEl = document.querySelector('.computer-score');
+const playerChoiceEl = document.querySelector('.player-choice');
 const computerChoiceEl = document.querySelector('.computer-choice');
 const gameResultEl = document.querySelector('.game-result');
 
@@ -47,6 +48,14 @@ function updateScoreElements() {
     computerScoreEl.innerHTML = computerScore;
 }
 
+// update choice elements and game winner element
+function updateGameElements(playerChoice, computerChoice, gameResult) {
+    const wins = " WINS"
+    playerChoiceEl.innerHTML = `<p>Player picks: ${playerChoice}</p>`;
+    computerChoiceEl.innerHTML = `<p>Computer picks: ${computerChoice}</p>`;
+    gameResultEl.innerHTML = `<p>${gameResult.toUpperCase()}${gameResult !== 'tie' ? wins : '' }!</p> `;
+}
+
 // handle click events
 function handleClick(click) {
     if (click === 'newgame') {
@@ -59,7 +68,7 @@ function handleClick(click) {
         const playerChoice = click;
         const computerChoice = determineComputerChoice();
         const gameResult = determineOutcome(playerChoice, computerChoice);
-        gameResultEl.innerHTML = gameResult;
+        updateGameElements(playerChoice, computerChoice, gameResult);
         if (gameResult === 'player') {
             playerScore += 1;
         } else if (gameResult === 'computer') {

@@ -4,6 +4,7 @@ const computerScoreEl = document.querySelector('.computer-score');
 const playerChoiceEl = document.querySelector('.player-choice');
 const computerChoiceEl = document.querySelector('.computer-choice');
 const gameResultEl = document.querySelector('.game-result');
+const matchResultEl = document.querySelector('.match-result');
 
 // add DOM button elements
 const rockBtn = document.querySelector('.rock-btn');
@@ -12,15 +13,15 @@ const scissorsBtn = document.querySelector('.scissors-btn');
 const newGameBtn = document.querySelector('.new-game-btn');
 
 // add event listeners
-
 rockBtn.addEventListener('click', () => handleClick('rock'));
 paperBtn.addEventListener('click', () => handleClick('paper'));
 scissorsBtn.addEventListener('click', () => handleClick('scissors'));
 newGameBtn.addEventListener('click', () => handleClick('newgame'));
 
-// initialize scores
+// initialize scores and newGameBtn
 let playerScore = 0;
 let computerScore = 0;
+newGameBtn.style.display = 'none';
 
 // determine outcome of a single game
 function determineOutcome(player, computer) {
@@ -70,7 +71,12 @@ function handleClick(click) {
         // reset to new game
         playerScore = 0;
         computerScore = 0;
+        matchResultEl.innerHTML = '';
         updateScoreElements();
+        newGameBtn.style.display = 'none';
+    } else if (computerScore === 5 || playerScore === 5) {
+        // prevent more turns from running if score 5 has been reached
+        return;
     } else {
         // handle player inputs
         const playerChoice = click;
@@ -87,9 +93,8 @@ function handleClick(click) {
 
     // did someone reach 5?
     if (computerScore === 5 || playerScore === 5) {
-        alert(`${playerScore === 5 ? "PLAYER " : "COMPUTER "} WINS!`);
-        playerScore = 0;
-        computerScore = 0;
+        matchResultEl.innerHTML = `<p>${computerScore === 5 ? "COMPUTER" : "PLAYER" } WINS THE MATCH!</p>`;
+        newGameBtn.style.display = 'block';
         updateScoreElements();
         clearGameElements();
     }

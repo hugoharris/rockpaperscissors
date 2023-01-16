@@ -9,3 +9,59 @@ body {
     background-color: #222222;
     font-family: sans-serif;
 }
+
+/* prevent choices from being highlighted in odd default colors*/
+::selection {
+    background: #222222;
+}
+
+.container {
+    margin: 10rem auto;
+    text-align: center;
+    width: 50vw;
+}
+
+header {
+    margin-bottom: 2rem;
+}
+
+.current-score {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.player-choice-btns {
+    margin: 1rem;
+    display: flex;
+    font-size: 10rem;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.choice-btn:hover {
+    cursor: pointer;
+}
+
+.new-game {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        margin: 1rem auto;
+        text-align: center;
+        width: 90vw;
+    }
+    
+    .player-choice-btns {
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        font-size: 5rem;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+}

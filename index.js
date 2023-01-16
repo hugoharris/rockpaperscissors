@@ -18,4 +18,3 @@ function determineComputerChoice() {
     return choices[x];
 }
 
-console.log(determineComputerChoice());

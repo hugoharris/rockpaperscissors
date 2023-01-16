@@ -53,7 +53,15 @@ function updateGameElements(playerChoice, computerChoice, gameResult) {
     const wins = " WINS"
     playerChoiceEl.innerHTML = `<p>Player picks: ${playerChoice}</p>`;
     computerChoiceEl.innerHTML = `<p>Computer picks: ${computerChoice}</p>`;
-    gameResultEl.innerHTML = `<p>${gameResult.toUpperCase()}${gameResult !== 'tie' ? wins : '' }!</p> `;
+    gameResultEl.innerHTML = `<p>${gameResult.toUpperCase()}${gameResult !== 'tie' ? wins : '' }!</p>`;
+}
+
+// clear choice elements and game winner element
+function clearGameElements(playerChoice, computerChoice, gameResult) {
+    const wins = " WINS"
+    playerChoiceEl.innerHTML = ``;
+    computerChoiceEl.innerHTML = ``;
+    gameResultEl.innerHTML = ``;
 }
 
 // handle click events
@@ -75,6 +83,15 @@ function handleClick(click) {
             computerScore += 1;
         }
         updateScoreElements();
+    }
+
+    // did someone reach 5?
+    if (computerScore === 5 || playerScore === 5) {
+        alert(`${playerScore === 5 ? "PLAYER " : "COMPUTER "} WINS!`);
+        playerScore = 0;
+        computerScore = 0;
+        updateScoreElements();
+        clearGameElements();
     }
 }
 

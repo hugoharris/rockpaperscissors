@@ -29,6 +29,8 @@ header {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
 }
 
 .player-choice-btns {
@@ -49,7 +51,24 @@ header {
     justify-content: center;
 }
 
-@media only screen and (max-width: 600px) {
+.new-game-btn {
+    border: none;
+    background-color: antiquewhite;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+}
+
+.game-result {
+    font-size: 1.5rem;
+    margin: 0.5rem;
+    transition: font-size 0.2s;
+}
+
+.match-result {
+    font-size: 2rem;
+}
+
+@media only screen and (max-width: 768px) {
     .container {
         margin: 1rem auto;
         text-align: center;
@@ -63,5 +82,9 @@ header {
         font-size: 5rem;
         gap: 0.5rem;
         justify-content: center;
+    }
+
+    .match-result {
+        font-size: 1.5rem;
     }
 }

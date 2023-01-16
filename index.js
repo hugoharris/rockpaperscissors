@@ -79,6 +79,8 @@ function handleClick(click) {
         return;
     } else {
         // handle player inputs
+        gameResultEl.style.fontSize = '1rem';
+        setTimeout(() => {gameResultEl.style.fontSize = '1.5rem';}, 200);
         const playerChoice = click;
         const computerChoice = determineComputerChoice();
         const gameResult = determineOutcome(playerChoice, computerChoice);

@@ -43,10 +43,14 @@ function determineComputerChoice() {
     return choices[x];
 }
 
-// update score elements
+// update score elements and animate the result
 function updateScoreElements() {
     playerScoreEl.innerHTML = playerScore;
     computerScoreEl.innerHTML = computerScore;
+    playerChoiceEl.style.right = '50px';
+    setTimeout(() => {playerChoiceEl.style.right = '0';}, 300);
+    computerChoiceEl.style.left = '50px';
+    setTimeout(() => {computerChoiceEl.style.left = '0';}, 300);
 }
 
 // update choice elements and game winner element
@@ -58,7 +62,7 @@ function updateGameElements(playerChoice, computerChoice, gameResult) {
 }
 
 // clear choice elements and game winner element
-function clearGameElements(playerChoice, computerChoice, gameResult) {
+function clearGameElements() {
     const wins = " WINS"
     playerChoiceEl.innerHTML = ``;
     computerChoiceEl.innerHTML = ``;
@@ -78,9 +82,9 @@ function handleClick(click) {
         // prevent more turns from running if score 5 has been reached
         return;
     } else {
-        // handle player inputs
+        // handle player inputs and animate result
         gameResultEl.style.fontSize = '1rem';
-        setTimeout(() => {gameResultEl.style.fontSize = '1.5rem';}, 200);
+        setTimeout(() => {gameResultEl.style.fontSize = '2rem';}, 200);
         const playerChoice = click;
         const computerChoice = determineComputerChoice();
         const gameResult = determineOutcome(playerChoice, computerChoice);

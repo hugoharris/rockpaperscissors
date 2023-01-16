@@ -7,7 +7,7 @@ body {
     box-sizing: border-box;
     color: #dddddd;
     background-color: #222222;
-    font-family: sans-serif;
+    font-family: "Bubblegum Sans", sans-serif;
 }
 
 /* prevent choices from being highlighted in odd default colors*/
@@ -25,12 +25,38 @@ header {
     margin-bottom: 2rem;
 }
 
+header h1 {
+    font-size: 3rem;
+}
+
+header h3 {
+    font-size: 1.7rem;
+}
+
+header p {
+    font-size: 1.5rem;
+}
+
 .current-score {
     display: flex;
     gap: 1rem;
     justify-content: center;
     align-items: center;
     font-size: 1.3rem;
+}
+
+.player-choice {
+    font-size: 1.4rem;
+    position: relative;
+    right: 0;
+    transition: right 0.3s;
+}
+
+.computer-choice {
+    font-size: 1.4rem;
+    position: relative;
+    left: 0;
+    transition: left 0.3s;
 }
 
 .player-choice-btns {
@@ -56,16 +82,18 @@ header {
     background-color: antiquewhite;
     border-radius: 5px;
     padding: 0.5rem 1rem;
+    font-family: inherit;
+    font-size: 1.5rem;
 }
 
 .game-result {
-    font-size: 1.5rem;
-    margin: 0.5rem;
+    font-size: 2rem;
+    margin: 1rem;
     transition: font-size 0.2s;
 }
 
 .match-result {
-    font-size: 2rem;
+    font-size: 2.2rem;
 }
 
 @media only screen and (max-width: 768px) {

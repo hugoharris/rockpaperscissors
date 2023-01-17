@@ -49,10 +49,18 @@ function game() {
     function updateScoreElements() {
         playerScoreEl.innerHTML = playerScore;
         computerScoreEl.innerHTML = computerScore;
-        playerChoiceEl.style.right = '50px';
-        setTimeout(() => {playerChoiceEl.style.right = '0';}, 300);
-        computerChoiceEl.style.left = '50px';
-        setTimeout(() => {computerChoiceEl.style.left = '0';}, 300);
+        playerChoiceEl.style.visibility = 'hidden';
+        playerChoiceEl.style.right = '2000px';
+        setTimeout(() => {
+            playerChoiceEl.style.visibility = 'visible';
+            playerChoiceEl.style.right = '0';
+        }, 300);
+        computerChoiceEl.style.visibility = 'hidden';
+        computerChoiceEl.style.left = '2000px';
+        setTimeout(() => {
+            computerChoiceEl.style.visibility = 'visible';
+            computerChoiceEl.style.left = '0';
+        }, 300);
     }
 
     // update choice elements and game winner element

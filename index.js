@@ -20,6 +20,10 @@ function game() {
     scissorsBtn.addEventListener('click', () => handleClick('scissors'));
     newGameBtn.addEventListener('click', () => handleClick('newgame'));
 
+    // add sounds
+    let flash = new Audio('./sound.wav');
+    let applause = new Audio('./applause.wav');
+
     // initialize scores and newGameBtn
     let playerScore = 0;
     let computerScore = 0;
@@ -93,6 +97,7 @@ function game() {
             return;
         } else {
             // handle player inputs and animate result
+            flash.play();
             gameResultEl.style.fontSize = '1rem';
             setTimeout(() => {gameResultEl.style.fontSize = '2rem';}, 200);
             const playerChoice = click;
@@ -110,6 +115,7 @@ function game() {
         // did someone reach 5?
         if (computerScore === 5 || playerScore === 5) {
             matchResultEl.innerHTML = `<p>${computerScore === 5 ? "COMPUTER" : "PLAYER" } WINS THE MATCH!</p>`;
+            applause.play();
             newGameBtn.style.display = 'block';
             updateScoreElements();
             clearGameElements();
